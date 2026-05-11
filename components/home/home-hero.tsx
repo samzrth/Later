@@ -11,8 +11,8 @@ export function HomeHero() {
         Cinematic hero — replace with looping 3D film of the house avatar in final production.
       */}
       <Image
-        src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=2400&q=85"
-        alt="3D rendered male model, high-fashion lighting, showcasing men's undergarment — hero campaign frame"
+        src="https://images.unsplash.com/photo-1721725222871-7e70364e7b29?auto=format&fit=crop&w=2400&q=85"
+        alt="Editorial men's innerwear campaign — model in briefs, muted premium lighting"
         fill
         priority
         className="object-cover opacity-90"
