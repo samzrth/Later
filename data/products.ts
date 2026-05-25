@@ -43,11 +43,11 @@ export const PRODUCTS: Product[] = [
       "Precision-cut brief with a sculpted V-front and featherweight micromodal blend. Designed for all-day ease and a quietly confident silhouette.",
     priceUsd: 68,
     imageFront:
-      "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1640765937555-6f413ed1d936?auto=format&fit=crop&w=1200&q=80",
     imageBack:
-      "https://images.unsplash.com/photo-1520975916090-3105956dac50?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1656587132121-aaccc57589cf?auto=format&fit=crop&w=1200&q=80",
     embroideryPreviewImage:
-      "https://images.unsplash.com/photo-1558618047-127c36cd0f46?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1601393709771-3938c63d41a6?auto=format&fit=crop&w=900&q=80",
     highlights: [
       "Italian-spun micromodal with natural stretch recovery",
       "Flatlock seams and heat-bonded labels",
@@ -66,11 +66,11 @@ export const PRODUCTS: Product[] = [
       "A modern trunk with a supportive U-cup and extended leg for frictionless movement. Tailored for travel, desk, and evening alike.",
     priceUsd: 72,
     imageFront:
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1561504599-f900052636b3?auto=format&fit=crop&w=1200&q=80",
     imageBack:
-      "https://images.unsplash.com/photo-1473966968600-fa801869adb0?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1590291432660-66bca4431392?auto=format&fit=crop&w=1200&q=80",
     embroideryPreviewImage:
-      "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1601393710008-984348f7447b?auto=format&fit=crop&w=900&q=80",
     highlights: [
       "Ergonomic U-panel without bulky padding",
       "Breathable pique knit along the inner thigh",
@@ -89,9 +89,9 @@ export const PRODUCTS: Product[] = [
       "A structured boxer short with a refined side vent and mother-of-pearl button fly. Room to move, none of the slouch.",
     priceUsd: 78,
     imageFront:
-      "https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1604981742511-2b85ff3a0ae8?auto=format&fit=crop&w=1200&q=80",
     imageBack:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1683449155666-7531f07a9b68?auto=format&fit=crop&w=1200&q=80",
     embroideryPreviewImage:
       "https://images.unsplash.com/photo-1558171813-4c088753af8f?auto=format&fit=crop&w=900&q=80",
     highlights: [
