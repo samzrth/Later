@@ -1,0 +1,47 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --lazypay-red: #d82c51;
+  --lazypay-red-dark: #b82445;
+  --lazypay-green: #1a9b4f;
+  --lazypay-green-border: #22b35a;
+  --bg-chat: #f0f0f0;
+  --text-primary: #2d3748;
+  --text-muted: #9aa3b2;
+  --bubble-bot: #ffffff;
+  --grey-cta: #c5cad3;
+  --grey-cta-text: #9aa3b2;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg-chat);
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-shell {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  padding: 0;
+}
+
+@media (min-width: 480px) {
+  .app-shell {
+    padding: 24px 16px;
+    align-items: center;
+  }
+}
