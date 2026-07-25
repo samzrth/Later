@@ -1,0 +1,21 @@
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.svg {
+  height: 100%;
+  width: auto;
+}
+
+.sm .svg {
+  height: 22px;
+}
+
+.md .svg {
+  height: 28px;
+}
+
+.lg .svg {
+  height: 36px;
+}

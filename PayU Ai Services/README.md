@@ -27,6 +27,8 @@ Open [http://localhost:5174](http://localhost:5174)
 
 ### Merchant1 (External)
 - Read-only view of all settings configured by Integration Support
+- **URL Configuration** — Orders webhook & Onboarding webhook only
+- **Reporting** — charts, time filters, CSV download, email auto-trigger
 - Help Center with integration docs for enabled products
 - Product showcase with cross-sell for Checkout EMI, BNPL, PaySense, Pay in 3, Downpayment + Pay in 3
 - All product CTAs link to [lazypay.in](https://lazypay.in/)

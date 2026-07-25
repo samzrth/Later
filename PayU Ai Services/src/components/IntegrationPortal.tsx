@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { useMerchants } from "../context/MerchantContext";
-import Layout from "./Layout";
+import { INTEGRATION_NAV } from "../config/navigation";
+import {
+  countEnabledProducts,
+  getEnabledProducts,
+  getMerchantMid,
+} from "../utils/productHelpers";
+import AppLayout from "./layout/AppLayout";
 import MerchantConfigPanel from "./MerchantConfigPanel";
 import styles from "./IntegrationPortal.module.css";
 
@@ -16,27 +22,14 @@ export default function IntegrationPortal() {
     return styles.statusInactive;
   };
 
-  const nav = (
-    <nav className={styles.sideNav}>
-      <span className={styles.navLabel}>Navigation</span>
-      <button type="button" className={styles.navItemActive}>
-        Merchants
-      </button>
-      <button type="button" className={styles.navItem} disabled>
-        Analytics (soon)
-      </button>
-      <button type="button" className={styles.navItem} disabled>
-        Audit Log (soon)
-      </button>
-    </nav>
-  );
-
   if (selected) {
     return (
-      <Layout
-        title={`Configure — ${selected.displayName}`}
-        subtitle={`MID: ${selected.settings.mid} · Last updated ${new Date(selected.lastUpdated).toLocaleString()}`}
-        nav={nav}
+      <AppLayout
+        title={selected.displayName}
+        subtitle={`MID: ${getMerchantMid(selected.settings)} · Last updated ${new Date(selected.lastUpdated).toLocaleString()}`}
+        navItems={INTEGRATION_NAV}
+        activeNavId="merchants"
+        navSectionLabel="Navigation"
       >
         <button type="button" className={styles.backBtn} onClick={() => setSelectedId(null)}>
           ← Back to merchant list
@@ -45,15 +38,17 @@ export default function IntegrationPortal() {
           merchant={selected}
           onSave={(settings) => updateMerchant(selected.id, settings, "Integration Support")}
         />
-      </Layout>
+      </AppLayout>
     );
   }
 
   return (
-    <Layout
+    <AppLayout
       title="Merchant Onboarding"
       subtitle="Select a merchant to configure Checkout Finance settings"
-      nav={nav}
+      navItems={INTEGRATION_NAV}
+      activeNavId="merchants"
+      navSectionLabel="Navigation"
     >
       <div className={styles.stats}>
         <div className={styles.statCard}>
@@ -79,15 +74,14 @@ export default function IntegrationPortal() {
 
       <div className={styles.merchantGrid}>
         {merchants.map((merchant) => {
-          const enabledProducts = Object.values(merchant.settings.products).filter(
-            (p) => p.enabled,
-          ).length;
+          const enabledCount = countEnabledProducts(merchant.settings);
+          const enabled = getEnabledProducts(merchant.settings);
           return (
             <article key={merchant.id} className={styles.merchantCard}>
               <div className={styles.cardTop}>
                 <div>
                   <h3>{merchant.displayName}</h3>
-                  <p>MID: {merchant.settings.mid}</p>
+                  <p>MID: {getMerchantMid(merchant.settings)}</p>
                 </div>
                 <span className={`${styles.status} ${statusClass(merchant.status)}`}>
                   {merchant.status}
@@ -97,7 +91,7 @@ export default function IntegrationPortal() {
               <div className={styles.cardMeta}>
                 <div>
                   <span>Products enabled</span>
-                  <strong>{enabledProducts} / 5</strong>
+                  <strong>{enabledCount} / 5</strong>
                 </div>
                 <div>
                   <span>Mode</span>
@@ -110,14 +104,14 @@ export default function IntegrationPortal() {
               </div>
 
               <div className={styles.productPills}>
-                {Object.entries(merchant.settings.products)
+                {Object.entries(enabled)
                   .filter(([, cfg]) => cfg.enabled)
                   .map(([id]) => (
                     <span key={id} className={styles.pill}>
                       {id.replace(/-/g, " ")}
                     </span>
                   ))}
-                {enabledProducts === 0 && (
+                {enabledCount === 0 && (
                   <span className={styles.pillEmpty}>No products enabled</span>
                 )}
               </div>
@@ -133,6 +127,6 @@ export default function IntegrationPortal() {
           );
         })}
       </div>
-    </Layout>
+    </AppLayout>
   );
 }

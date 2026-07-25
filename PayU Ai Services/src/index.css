@@ -11,20 +11,23 @@
   --payu-teal-dark: #0d6b62;
   --payu-green: #1a9b4f;
   --lazypay-red: #d82c51;
-  --bg-chat: #f0f3f7;
+  --bg-app: #f0f3f7;
   --text-primary: #1a202c;
   --text-muted: #718096;
+  --border: #e2e8f0;
+  --surface: #ffffff;
 }
 
 html,
 body,
 #root {
   height: 100%;
+  overflow: hidden;
 }
 
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: var(--bg-chat);
+  background: var(--bg-app);
   -webkit-font-smoothing: antialiased;
   color: var(--text-primary);
 }

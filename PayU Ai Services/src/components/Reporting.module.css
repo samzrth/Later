@@ -1,0 +1,244 @@
+.reporting {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.rangeFilter {
+  display: flex;
+  gap: 8px;
+  background: #fff;
+  padding: 4px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.rangeBtn,
+.rangeActive {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.rangeActive {
+  background: var(--payu-teal);
+  color: #fff;
+  font-weight: 600;
+}
+
+.downloadBtn {
+  padding: 10px 20px;
+  background: #0f2b3d;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.kpiRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.kpi {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+
+.kpi span {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.kpi strong {
+  display: block;
+  font-size: 26px;
+  margin-top: 6px;
+}
+
+.chartsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.chart {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.chart h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 140px;
+}
+
+.barCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  min-width: 0;
+}
+
+.bar {
+  width: 100%;
+  max-width: 28px;
+  border-radius: 4px 4px 0 0;
+  min-height: 4px;
+  margin-top: auto;
+  transition: height 0.3s;
+}
+
+.barLabel {
+  font-size: 9px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.emailSection {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px 28px;
+}
+
+.emailSection h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.emailSection > p {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.emailField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.emailField span {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.emailField input {
+  padding: 10px 14px;
+  border: 1px solid #d8dee6;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.emailActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primaryBtn {
+  background: var(--payu-teal);
+  color: #fff;
+  border: none;
+}
+
+.secondaryBtn {
+  background: #fff;
+  color: var(--payu-teal);
+  border: 1px solid var(--payu-teal);
+}
+
+.success {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--payu-green);
+}
+
+.autoTrigger {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.autoRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.freqRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+.freqRow select {
+  padding: 8px 12px;
+  border: 1px solid #d8dee6;
+  border-radius: 6px;
+}
+
+.autoNote {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--text-muted);
+  background: #f0faf9;
+  padding: 10px 12px;
+  border-radius: 6px;
+}
+
+@media (max-width: 900px) {
+  .kpiRow,
+  .chartsGrid {
+    grid-template-columns: 1fr;
+  }
+}

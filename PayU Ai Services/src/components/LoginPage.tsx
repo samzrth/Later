@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import type { UserRole } from "../types";
 import { useAuth } from "../context/AuthContext";
+import PayULogo from "./PayULogo";
 import styles from "./LoginPage.module.css";
 
 const ROLES: { id: UserRole; title: string; subtitle: string; hint: string }[] = [
@@ -37,11 +38,7 @@ export default function LoginPage() {
     <div className={styles.page}>
       <div className={styles.left}>
         <div className={styles.brand}>
-          <div className={styles.logoMark}>P</div>
-          <div>
-            <h1>PayU Checkout Finance</h1>
-            <p>Ops Panel & Merchant Portal</p>
-          </div>
+          <PayULogo variant="light" size="lg" />
         </div>
 
         <div className={styles.hero}>

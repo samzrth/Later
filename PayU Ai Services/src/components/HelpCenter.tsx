@@ -1,10 +1,10 @@
 import { useState } from "react";
-import type { MerchantSettings } from "../types";
+import type { ProductId } from "../types";
 import { INTEGRATION_DOCS, LAZYPAY_URL, PRODUCTS } from "../data/products";
 import styles from "./HelpCenter.module.css";
 
 interface HelpCenterProps {
-  enabledProducts: MerchantSettings["products"];
+  enabledProducts: Record<ProductId, { enabled: boolean }>;
 }
 
 export default function HelpCenter({ enabledProducts }: HelpCenterProps) {

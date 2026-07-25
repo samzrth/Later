@@ -1,8 +1,8 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import type { Merchant } from "../types";
-import { createDefaultSettings } from "../data/products";
+import { createDefaultSettings } from "../data/defaults";
 
-const STORAGE_KEY = "payu-checkout-finance-merchants";
+const STORAGE_KEY = "payu-checkout-finance-merchants-v2";
 
 const DEFAULT_MERCHANTS: Merchant[] = [
   {

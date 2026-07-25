@@ -1,13 +1,21 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useMerchants } from "../context/MerchantContext";
-import Layout from "./Layout";
+import { MERCHANT_NAV } from "../config/navigation";
+import {
+  countEnabledProducts,
+  getEnabledProducts,
+  getMerchantMid,
+  getMerchantName,
+} from "../utils/productHelpers";
+import AppLayout from "./layout/AppLayout";
 import MerchantConfigPanel from "./MerchantConfigPanel";
 import HelpCenter from "./HelpCenter";
 import ProductShowcase from "./ProductShowcase";
+import Reporting from "./Reporting";
 import styles from "./MerchantPortal.module.css";
 
-type Tab = "overview" | "settings" | "products" | "help";
+type Tab = "overview" | "settings" | "reporting" | "products" | "help";
 
 export default function MerchantPortal() {
   const { user } = useAuth();
@@ -18,48 +26,34 @@ export default function MerchantPortal() {
 
   if (!merchant) {
     return (
-      <Layout title="Merchant Portal" subtitle="No merchant linked to this account">
+      <AppLayout
+        title="Merchant Portal"
+        subtitle="No merchant linked to this account"
+        navItems={MERCHANT_NAV}
+        activeNavId="overview"
+      >
         <p>Contact Integration Support to link your account.</p>
-      </Layout>
+      </AppLayout>
     );
   }
 
-  const enabledCount = Object.values(merchant.settings.products).filter((p) => p.enabled).length;
-
-  const nav = (
-    <nav className={styles.sideNav}>
-      <span className={styles.navLabel}>Your Portal</span>
-      {(
-        [
-          ["overview", "Overview"],
-          ["settings", "My Settings"],
-          ["products", "Explore Products"],
-          ["help", "Help Center"],
-        ] as const
-      ).map(([id, label]) => (
-        <button
-          key={id}
-          type="button"
-          className={tab === id ? styles.navItemActive : styles.navItem}
-          onClick={() => setTab(id)}
-        >
-          {label}
-        </button>
-      ))}
-    </nav>
-  );
+  const enabledProducts = getEnabledProducts(merchant.settings);
+  const enabledCount = countEnabledProducts(merchant.settings);
 
   return (
-    <Layout
+    <AppLayout
       title={merchant.displayName}
-      subtitle={`MID: ${merchant.settings.mid} · ${enabledCount} finance products active`}
-      nav={nav}
+      subtitle={`MID: ${getMerchantMid(merchant.settings)} · ${enabledCount} finance products active`}
+      navItems={MERCHANT_NAV}
+      activeNavId={tab}
+      onNavSelect={(id) => setTab(id as Tab)}
+      navSectionLabel="Your Portal"
     >
       {tab === "overview" && (
         <div className={styles.overview}>
           <div className={styles.welcomeBanner}>
             <div>
-              <h2>Welcome back, {merchant.settings.merchantName}</h2>
+              <h2>Welcome back, {getMerchantName(merchant.settings)}</h2>
               <p>
                 Your Checkout Finance integration is{" "}
                 <strong>{merchant.settings.testMode ? "in Test Mode" : "Live"}</strong>.
@@ -79,8 +73,8 @@ export default function MerchantPortal() {
               <strong>{merchant.settings.testMode ? "On" : "Off"}</strong>
             </div>
             <div className={styles.quickStat}>
-              <span>EMI Calculator</span>
-              <strong>{merchant.settings.showEmiCalculator ? "Visible" : "Hidden"}</strong>
+              <span>BNPL</span>
+              <strong>{merchant.settings.bnpl.enabled ? "On" : "Off"}</strong>
             </div>
             <div className={styles.quickStat}>
               <span>Last Updated</span>
@@ -99,11 +93,7 @@ export default function MerchantPortal() {
             </button>
           </section>
 
-          <ProductShowcase
-            enabledProducts={merchant.settings.products}
-            compact
-            onViewAll={() => setTab("products")}
-          />
+          <ProductShowcase enabledProducts={enabledProducts} compact onViewAll={() => setTab("products")} />
         </div>
       )}
 
@@ -117,11 +107,13 @@ export default function MerchantPortal() {
         </div>
       )}
 
-      {tab === "products" && (
-        <ProductShowcase enabledProducts={merchant.settings.products} />
+      {tab === "reporting" && (
+        <Reporting merchantId={merchant.id} merchantName={getMerchantName(merchant.settings)} />
       )}
 
-      {tab === "help" && <HelpCenter enabledProducts={merchant.settings.products} />}
-    </Layout>
+      {tab === "products" && <ProductShowcase enabledProducts={enabledProducts} />}
+
+      {tab === "help" && <HelpCenter enabledProducts={enabledProducts} />}
+    </AppLayout>
   );
 }

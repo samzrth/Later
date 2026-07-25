@@ -1,9 +1,9 @@
-import type { MerchantSettings } from "../types";
+import type { ProductId } from "../types";
 import { LAZYPAY_URL, PRODUCTS } from "../data/products";
 import styles from "./ProductShowcase.module.css";
 
 interface ProductShowcaseProps {
-  enabledProducts: MerchantSettings["products"];
+  enabledProducts: Record<ProductId, { enabled: boolean }>;
   compact?: boolean;
   onViewAll?: () => void;
 }
